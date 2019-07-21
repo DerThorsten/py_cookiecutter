@@ -1,0 +1,13 @@
+name: {{cookiecutter.package_name}}-dev-requirements
+
+channels:
+  - anaconda
+  - conda-forge
+dependencies:
+  - python >=3.6
+  - pytest
+  - pip
+  - sphinx 
+  - sphinx_rtd_theme
+  - sphinxcontrib-apidoc 
+  - sphinx-gallery 

@@ -1,0 +1,2 @@
+conda:
+  file: {{cookiecutter.package_name}}-dev-requirements.yml

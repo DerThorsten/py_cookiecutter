@@ -1,0 +1,62 @@
+Note: there are many handy hints in comments in this example -- remove them when you've finalized your recipe
+
+# Jinja variables help maintain the recipe as you'll update the version only here.
+# Using the name variable with the URL in line 14 is convenient
+# when copying and pasting from another recipe, but not really needed.
+{% set version = "0.1.0" %}
+
+package:
+  name: {{cookiecutter.conda_package_name}}
+  version: {{ version }}
+
+source:
+  path: ../
+
+
+build:
+  noarch: python
+  number: 0
+  {% raw %}
+  script: "{{ PYTHON }} -m pip install . -vv"
+  {% endraw %}
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+    - click
+
+test:
+  imports:
+    - {{cookiecutter.conda_package_name}}
+
+about:
+  home: https://github.com/{{cookiecutter.github_user_name}}/{{cookiecutter.github_project_name}}
+  {% if cookiecutter.open_source_license == 'MIT license' -%}
+  license: MIT
+  license_family: MIT
+  {% elif cookiecutter.open_source_license == 'BSD license' %}
+  license: BSD 3-Clause
+  license_family: BSD
+  {% elif cookiecutter.open_source_license == 'ISC license' -%}
+  license: ISC
+  license_family: ISC
+  {% elif cookiecutter.open_source_license == 'Apache Software License 2.0' -%}
+  license: Apache
+  license_family: Apache
+  {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
+  license: GPL
+  license_family: GPL
+  {% endif %}
+  license_file: ../LICENSE.txt
+  summary: '{{cookiecutter.summary}}'
+  description: '{{cookiecutter.description}}'
+  documentation_url: https://readthedocs.org/projects/{{cookiecutter.readthedocs_package_name}}/
+  dev_url: https://github.com/{{cookiecutter.github_user_name}}/{{cookiecutter.github_project_name}}
+
+extra:
+  recipe-maintainers:
+    - {{cookiecutter.full_name}}
+
+
