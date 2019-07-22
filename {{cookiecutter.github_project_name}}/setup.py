@@ -9,7 +9,7 @@ with open('README.rst') as readme_file:
     readme = readme_file.read()
 
 requirements = [
-    #'click>=6.0'
+    'click'
 ]
 
 setup_requirements = [
