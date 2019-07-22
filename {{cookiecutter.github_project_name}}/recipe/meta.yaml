@@ -22,7 +22,7 @@ requirements:
     - pip
     - click>=6.0
     #- pytest
-    #- pytest-runner
+    # - pytest-runner
 test:
   imports:
     - {{cookiecutter.conda_package_name}}

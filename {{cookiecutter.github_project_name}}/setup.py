@@ -12,9 +12,12 @@ requirements = [
     'click'
 ]
 
+needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
+pytest_runner = ['pytest-runner'] if needs_pytest else []
+
 setup_requirements = [
-    'pytest-runner'
-]
+    #'pytest-runner'
+] + pytest_runner
 
 test_requirements = [
     'pytest'
