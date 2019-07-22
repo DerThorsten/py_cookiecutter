@@ -31,7 +31,7 @@ echo "------------------------------------------------------------"
 cookiecutter $TEMPLATE_FOLDER --overwrite-if-exists --no-input || exit 1
 
 echo "------------------------------------------------------------"
-echo "go into cpp tools"
+echo "go into pytools"
 echo "------------------------------------------------------------"
 cd pytools || exit 1
 

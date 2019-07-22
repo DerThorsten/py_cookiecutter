@@ -1,0 +1,129 @@
+version: 2
+variables:
+
+  install_build_essential: &install_build_essential
+    run:
+      name: Install Build essential
+      command: |
+        apt-get update
+        apt-get install -y build-essential
+
+  prepare_conda: &prepare_conda
+    run:
+      name: Config and Update Conda
+      command: |
+        conda config --set always_yes yes --set changeps1 no
+        conda update -q conda
+        conda install cookiecutter -c conda-forge 
+
+  run_test_conda_build: &run_test_conda_build
+    run:
+      name: Run tests
+      command: |
+        conda install conda-build make
+        cd ..
+        cookiecutter repo --overwrite-if-exists --no-input
+        cd pytools
+        conda build recipe -c conda-forge
+
+  update_conda: &update_conda
+    run:
+      name: update conda
+      command: |
+        conda update -q conda 
+        conda init bash
+
+  run_test_script: &run_test_script
+    run:
+      name: Run test scripts
+      command: |
+        conda init bash
+        chmod +x tests/test_project.sh 
+        ./tests/test_project.sh repo source
+
+
+jobs:
+  test_job:
+    docker:
+     - image: continuumio/miniconda3:4.5.12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - *install_build_essential
+      - *update_conda
+      - *run_test_script
+
+  test_conda_build_job:
+    docker:
+     - image: continuumio/miniconda3:4.5.12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - *install_build_essential
+      - *prepare_conda
+      - *run_test_conda_build
+  
+  push_to_pytools_job:
+    docker:
+     - image: continuumio/miniconda3:4.5.12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "a1:57:78:c8:fd:8d:58:13:09:02:4b:6e:4b:0a:ec:68"
+      - *prepare_conda
+      - run:
+          name: clone pytools
+          command: |
+            cd ..
+            rm -rf pytools
+            echo "CIRCLE_BRANCH $CIRCLE_BRANCH"
+            echo "CIRCLE_USERNAME  $CIRCLE_USERNAME"
+            if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
+                echo "IN master"
+                git clone https://github.com/DerThorsten/pytools
+            else
+              echo "NOT IN master"
+              git clone https://github.com/DerThorsten/pytools -b tests
+            fi
+            conda install --yes cookiecutter -c conda-forge 
+            cookiecutter repo --overwrite-if-exists --no-input  --config-file ~/repo/tests/cookiecutter_config.yaml
+            cd pytools
+
+            
+            git config user.email "derthorsten@gmail.com"
+            git config user.name "DerThorsten"
+            git add .
+            git commit -am "continous integration auto updated" --allow-empty
+            if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
+                  git push --force origin master
+            else
+              git push --force origin tests
+            fi
+
+            
+
+
+workflows:
+  version: 2
+
+  my_test:
+    jobs:
+      - test_job
+      - test_conda_build_job
+      - push_to_pytools_job
+
+  nightly-test:
+    triggers:
+       - schedule:
+            cron: "0 0 * * *"
+            filters:
+              branches:
+                only:
+                  - master
+    jobs:
+       - test_job
+       - test_conda_build_job
+       - push_to_pytools_job
+
