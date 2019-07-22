@@ -22,7 +22,7 @@ After installing cookiecutter, use the cpp-cookiecutter:
 
 .. code-block:: shell
 
-    $ cookiecutter https://github.com/DerThorsten/cpp_cookiecutter
+    $ cookiecutter https://github.com/DerThorsten/py_cookiecutter
 
 There you need to specify the variables of the cpp_cookiecutter which are explained
 in the table below:
@@ -42,46 +42,25 @@ in the table below:
      - john@doe.de
    * - project_name                 
      - name of the project
-     - cpptools
+     - pytools
    * - project_slug                 
      - url friendly version of package name
-     - cpptools
+     - pytools
    * - package_name                 
      - package name
-     - cpptools
+     - pytools
    * - conda_package_name           
      - conda package name
-     - cpptools
+     - pytools
    * - readthedocs_package_name     
      - readthedocs package name
-     - cpptools
-   * - cpp_namespace                
-     - name of C++ namespace
-     - cpptools
-   * - cpp_root_folder_name         
-     - name of the root C++ folder 
-     - cpptools
-   * - cpp_macro_prefix             
-     - prefix for all macros in C++
-     - CPPTOOLS
-   * - cpp_standart                 
-     - which C++ standard should be used
-     - 14
-   * - cmake_project_name           
-     - name of the project within cmake
-     - cpptools
-   * - cmake_interface_library_name 
-     - name of the cmake interface library
-     - cpptools
+     - pytools
    * - github_project_name          
      - name of the project on github
-     - cpptools
-   * - python_bindings              
-     - should python bindings be included
-     - Yes
+     - pytools
    * - python_package_name          
      - name of the python package
-     - cpptools
+     - pytools
    * - github_user_name             
      - authors github user name
      - JohnDoe
@@ -93,61 +72,33 @@ in the table below:
      - MIT LICENCE
    * - summary                      
      - a short summary of the project
-     - cpptools is a modern C++ Library
+     - pytools is a modern C++ Library
    * - description                  
      - a short description of the project
-     - cpptools is a modern C++ Library   
+     - pytools is a modern python Library   
 
 
-Build Generated Project
+Install Generated Project with setup.py
 ********************************************
 
 This cookiecutter is bet used in conjunction with conda:
-Assuming your package is named cpptools the following script
-shows the usage of the generated project cookiecutter on Linux/MacOS
+Assuming your created a package  named pytools the following installs the project using :code:`setup.py`
 
 .. code-block:: shell
 
-    cd cpptools
-    conda env create -f cpptools-dev-requirements.yml
-    source activate cpptools-dev-requirements
-    mkdir build
-    cd build
-    cmake ..
-    make -j2
-    make cpp-test
-    make python-test
-    cd examples
-    ./hello_world
-    cd ..
-    cd benchmark
-    ./benchmark_cpptools
+    cd pytools
+    python setup.py install
+    
 
-
-On a windows machine this looks like:
-
-.. code-block:: shell
-
-    cd cpptools
-    conda env create -f cpptools-dev-requirements.yml
-    call activate cpptools-dev-requirements
-    mkdir build
-    cd build
-    cmake .. -G"Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Release  ^
-          -DDEPENDENCY_SEARCH_PREFIX="%CONDA_PREFIX%\Library" -DCMAKE_PREFIX_PATH="%CONDA_PREFIX%\Library"
-    call activate cpptools-dev-requirements
-    cmake --build . --target ALL_BUILD
-    cmake --build . --target python-test
-    cmake --build . --target cpp-test
 
 Install dev requirements
 =========================
 
-To install all dev requirements install the dependencies via the requirements yaml file
+To install all dev requirements ofn this cookiecutter just install the dependencies via the requirements yaml file
 
 .. code-block:: shell
 
-    $ conda env create -f cpp_cookiecutter-dev-requiremnts.yml
+    $ conda env create -f py_cookiecutter-dev-requiremnts.yml
 
 This will create a fresh conda environments with all dependencies to use the cookiecutter and 
 to build the documentation of this project.
