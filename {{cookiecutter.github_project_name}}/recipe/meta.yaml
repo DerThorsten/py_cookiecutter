@@ -22,11 +22,12 @@ build:
 requirements:
   host:
     - python
-    - pip
   run:
     - python
+    - pip
     - click>=6.0
-
+    - pytest
+    - pytest-runner
 test:
   imports:
     - {{cookiecutter.conda_package_name}}
