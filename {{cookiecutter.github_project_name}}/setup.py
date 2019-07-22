@@ -9,14 +9,16 @@ with open('README.rst') as readme_file:
     readme = readme_file.read()
 
 requirements = [
-    'click>=6.0'
+    #'click>=6.0'
 ]
 
 setup_requirements = [
-    'pytest-runner'
+    #'pytest-runner'
 ]
 
-test_requirements = ['pytest']
+test_requirements = [
+#'pytest'
+]
 
 
 
