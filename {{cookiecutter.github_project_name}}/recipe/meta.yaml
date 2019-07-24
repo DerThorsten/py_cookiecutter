@@ -1,9 +1,11 @@
-{% set version = "0.1.0" %}
-
+{% raw %}
+{% set data = load_setup_py_data() %}
+{% endraw %}
 package:
   name: {{cookiecutter.conda_package_name}}
-  version: {{ version }}
-
+  {% raw %}
+  version: {{ data['version'] }}
+  {% endraw %}
 source:
   path: ../
 
@@ -18,11 +20,13 @@ requirements:
   host:
     - python
   run:
-    - python
-    - pip
-    - click>=6.0
-    #- pytest
-    # - pytest-runner
+    - python >=3.6
+    # dependencies are defined in setup.py
+    {% raw %}
+    {% for dep in data['install_requires'] %}
+    - {{ dep.lower() }}
+    {% endfor %}
+    {% endraw %}
 test:
   imports:
     - {{cookiecutter.conda_package_name}}
