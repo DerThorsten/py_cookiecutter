@@ -14,7 +14,7 @@ build:
   noarch: python
   number: 0
   {% raw %}
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: "{{ PYTHON }} -m pip install --no-deps --ignore-installed ."
   {% endraw %}
 requirements:
   host:
