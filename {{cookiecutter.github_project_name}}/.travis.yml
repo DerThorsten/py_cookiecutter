@@ -28,4 +28,4 @@ install:
 
 script:
 - chmod +x .circleci/test_project.sh
-- ./.circleci/test_project.sh py_cookiecutter source
+- ./.circleci/test_project.sh
