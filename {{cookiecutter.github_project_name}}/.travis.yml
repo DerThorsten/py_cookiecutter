@@ -27,5 +27,5 @@ install:
     - conda update -q conda
 
 script:
-- chmod +x .circleci/test_project.sh
-- ./.circleci/test_project.sh
+- chmod +x .ci/test_project.sh
+- ./.ci/test_project.sh

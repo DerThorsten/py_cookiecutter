@@ -34,8 +34,8 @@ variables:
       name: Run test scripts
       command: |
         conda init bash
-        chmod +x .circleci/test_project.sh 
-        ./.circleci/test_project.sh 
+        chmod +x .ci/test_project.sh 
+        ./.ci/test_project.sh 
 
 jobs:
   test_job:
