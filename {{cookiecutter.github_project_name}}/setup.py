@@ -21,7 +21,8 @@ setup_requirements = [
 ] + pytest_runner
 
 test_requirements = [
-    'pytest'
+    'pytest',
+    'coverage'
 ]
 
 
@@ -41,7 +42,7 @@ setup(
     description="{{ cookiecutter.description }}",
     entry_points={
         'console_scripts': [
-            '{{ cookiecutter.python_package_name}}={{ cookiecutter.python_package_name}}.cli:main',
+            '{{ cookiecutter.python_package_name}}={{ cookiecutter.python_package_name}}.cli.main:cli',
         ],
     },
     install_requires=requirements,
@@ -49,7 +50,7 @@ setup(
     include_package_data=True,
     keywords='{{ cookiecutter.project_slug }}',
     name='{{ cookiecutter.python_package_name }}',
-    packages=find_packages(include=['{{ cookiecutter.python_package_name }}']),
+    packages=find_packages(),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
