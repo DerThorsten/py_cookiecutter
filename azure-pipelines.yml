@@ -12,8 +12,8 @@ jobs:
         inputs:
           updateConda: false
       - script: |
-          chmod +x tests/test_project.sh 
-          ./tests/test_project.sh $(repoDir) source
+          chmod +x ci/test_project.sh 
+          ./ci/test_project.sh $(repoDir) source
 
   - job: macOS
     pool:
@@ -27,8 +27,8 @@ jobs:
         displayName: Add conda to PATH
 
       - script: |
-          chmod +x tests/test_project.sh || exit 1
-          ./tests/test_project.sh $(repoDir) source || exit 1
+          chmod +x ci/test_project.sh || exit 1
+          ./ci/test_project.sh $(repoDir) source || exit 1
 
   - job:
     displayName: Windows

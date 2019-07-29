@@ -27,5 +27,5 @@ install:
     - conda update -q conda
 
 script:
-- chmod +x tests/test_project.sh
-- ./tests/test_project.sh py_cookiecutter source
+- chmod +x ci/test_project.sh
+- ./ci/test_project.sh py_cookiecutter source
