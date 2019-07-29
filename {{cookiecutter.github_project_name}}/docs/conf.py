@@ -31,12 +31,13 @@ import sphinx_rtd_theme
 
 
 def erase_folder_content(folder):
-    for file_object in os.listdir(folder):
-        file_object_path = os.path.join(folder, file_object)
-        if os.path.isfile(file_object_path):
-            os.unlink(file_object_path)
-        else:
-            shutil.rmtree(file_object_path) 
+    if os.path.isdir(folder):
+        for file_object in os.listdir(folder):
+            file_object_path = os.path.join(folder, file_object)
+            if os.path.isfile(file_object_path):
+                os.unlink(file_object_path)
+            else:
+                shutil.rmtree(file_object_path) 
 
 
 on_rtd  = os.environ.get('READTHEDOCS', None) == 'True'
