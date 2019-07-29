@@ -1,5 +1,5 @@
 #!/bin/bash
-
+TEMPLATE_FOLDER=$1
 echo "------------------------------------------------------------"
 echo "create py_cookiecutter-dev-requirements conda env"
 echo "------------------------------------------------------------"
@@ -21,7 +21,7 @@ cd .. || exit 1
 echo "------------------------------------------------------------"
 echo "render coookiecutter template"
 echo "------------------------------------------------------------"
-cookiecutter py_cookiecutter --overwrite-if-exists --no-input || exit 1
+cookiecutter $TEMPLATE_FOLDER --overwrite-if-exists --no-input || exit 1
 
 
 echo "------------------------------------------------------------"

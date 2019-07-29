@@ -28,4 +28,4 @@ install:
 
 script:
 - chmod +x .ci/test_project.sh
-- ./.ci/test_project.sh py_cookiecutter source
+- ./.ci/test_project.sh py_cookiecutter

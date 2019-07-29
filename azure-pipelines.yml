@@ -13,7 +13,7 @@ jobs:
           updateConda: false
       - script: |
           chmod +x .ci/test_project.sh 
-          ./.ci/test_project.sh $(repoDir) source
+          ./.ci/test_project.sh $(repoDir)
 
   - job: macOS
     pool:
@@ -28,7 +28,7 @@ jobs:
 
       - script: |
           chmod +x .ci/test_project.sh || exit 1
-          ./.ci/test_project.sh $(repoDir) source || exit 1
+          ./.ci/test_project.sh $(repoDir) || exit 1
 
   - job:
     displayName: Windows

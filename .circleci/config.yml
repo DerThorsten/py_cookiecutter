@@ -39,7 +39,7 @@ variables:
       command: |
         conda init bash
         chmod +x .ci/test_project.sh 
-        ./.ci/test_project.sh 
+        ./.ci/test_project.sh py_cookiecutter
 
 
 jobs:
