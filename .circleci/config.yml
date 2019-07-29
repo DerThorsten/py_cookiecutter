@@ -38,8 +38,8 @@ variables:
       name: Run test scripts
       command: |
         conda init bash
-        chmod +x ci/test_project.sh 
-        ./ci/test_project.sh repo source
+        chmod +x .ci/test_project.sh 
+        ./.ci/test_project.sh repo source
 
 
 jobs:
