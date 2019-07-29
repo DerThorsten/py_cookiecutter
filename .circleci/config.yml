@@ -22,7 +22,7 @@ variables:
       command: |
         conda install conda-build make
         cd ..
-        cookiecutter repo --overwrite-if-exists --no-input
+        cookiecutter py_cookiecutter --overwrite-if-exists --no-input
         cd pytools
         conda build recipe -c conda-forge
 
@@ -88,7 +88,7 @@ jobs:
               git clone https://github.com/DerThorsten/pytools -b tests
             fi
             conda install --yes cookiecutter -c conda-forge 
-            cookiecutter repo --overwrite-if-exists --no-input  --config-file ~/py_cookiecutter/.ci/cookiecutter_config.yaml
+            cookiecutter py_cookiecutter --overwrite-if-exists --no-input  --config-file ~/py_cookiecutter/.ci/cookiecutter_config.yaml
             cd pytools
 
             
