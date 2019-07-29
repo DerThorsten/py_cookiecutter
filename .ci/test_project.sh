@@ -21,7 +21,7 @@ cd .. || exit 1
 echo "------------------------------------------------------------"
 echo "render coookiecutter template"
 echo "------------------------------------------------------------"
-cookiecutter $TEMPLATE_FOLDER --overwrite-if-exists --no-input || exit 1
+cookiecutter py_cookiecutter --overwrite-if-exists --no-input || exit 1
 
 
 echo "------------------------------------------------------------"

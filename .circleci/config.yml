@@ -39,14 +39,14 @@ variables:
       command: |
         conda init bash
         chmod +x .ci/test_project.sh 
-        ./.ci/test_project.sh repo source
+        ./.ci/test_project.sh 
 
 
 jobs:
   test_job:
     docker:
      - image: continuumio/miniconda3:4.5.12
-    working_directory: ~/repo
+    working_directory: ~/{{cookiecutter.github_project_name}}
     steps:
       - checkout
       - *install_build_essential
@@ -56,7 +56,7 @@ jobs:
   test_conda_build_job:
     docker:
      - image: continuumio/miniconda3:4.5.12
-    working_directory: ~/repo
+    working_directory: ~/{{cookiecutter.github_project_name}}
     steps:
       - checkout
       - *install_build_essential
@@ -66,7 +66,7 @@ jobs:
   push_to_pytools_job:
     docker:
      - image: continuumio/miniconda3:4.5.12
-    working_directory: ~/repo
+    working_directory: ~/{{cookiecutter.github_project_name}}
     steps:
       - checkout
       - add_ssh_keys:
@@ -88,7 +88,7 @@ jobs:
               git clone https://github.com/DerThorsten/pytools -b tests
             fi
             conda install --yes cookiecutter -c conda-forge 
-            cookiecutter repo --overwrite-if-exists --no-input  --config-file ~/repo/.ci/cookiecutter_config.yaml
+            cookiecutter repo --overwrite-if-exists --no-input  --config-file ~/{{cookiecutter.github_project_name}}/.ci/cookiecutter_config.yaml
             cd pytools
 
             
