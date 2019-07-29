@@ -9,7 +9,7 @@ conda env create -f py_cookiecutter-dev-requirements.yml || exit 1
 echo "------------------------------------------------------------"
 echo "activate py_cookiecutter-dev-requirements conda env"
 echo "------------------------------------------------------------"
-$SOURCE activate py_cookiecutter-dev-requirements || exit 1
+source activate py_cookiecutter-dev-requirements || exit 1
 
 
 echo "------------------------------------------------------------"
