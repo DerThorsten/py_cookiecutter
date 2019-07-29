@@ -81,7 +81,7 @@ Enable Continuous Integration
 To enable the continuous integration :
     * add your project repository to your Travis-CI_ account
     * add your project repository to your Circle-CI_ account
-    * add your project repository to your _Azure-Pipelines account
+    * add your project repository to your Azure-Pipelines_ account
 
 The next change to your repository should trigger builds on the CI servers.
 
