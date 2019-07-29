@@ -50,5 +50,5 @@ make clean || exit 1
 echo "------------------------------------------------------------"
 echo "install via setup.py"
 echo "------------------------------------------------------------"
-python setup.py install
+python setup.py install || exit 1
 
