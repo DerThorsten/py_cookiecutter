@@ -10,7 +10,7 @@ Welcome to {{ cookiecutter.project_name }}'s documentation!
    usage
    auto_examples/index.rst
    tutorials/index.rst
-   modules
+   theapi
    contributing
    authors
    history

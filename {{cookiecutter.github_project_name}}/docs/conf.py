@@ -19,12 +19,44 @@
 # absolute, like shown here.
 #
 import os
+import shutil
 import sys
+import subprocess
 sys.path.insert(0, os.path.abspath('..'))
 
 import {{ cookiecutter.python_package_name }}
 import sphinx_gallery
 import sphinx_rtd_theme
+
+
+
+def erase_folder_content(folder):
+    for file_object in os.listdir(folder):
+        file_object_path = os.path.join(folder, file_object)
+        if os.path.isfile(file_object_path):
+            os.unlink(file_object_path)
+        else:
+            shutil.rmtree(file_object_path) 
+
+
+on_rtd  = os.environ.get('READTHEDOCS', None) == 'True'
+on_travis = os.environ.get('TRAVIS', None) == 'True'
+on_ci = on_rtd or on_travis
+
+
+package_name = "{{cookiecutter.python_package_name}}"
+this_dir = os.path.dirname(__file__)
+py_mod_path  = os.path.join(this_dir, '../')
+package_dir = os.path.join(py_mod_path, package_name)
+template_dir =  os.path.join(this_dir, '_template')
+if True:
+    apidoc_out_folder =  os.path.join(this_dir, 'api')
+    erase_folder_content(apidoc_out_folder)
+    arglist = ['sphinx-apidoc','-o',apidoc_out_folder,package_dir,'-P']
+    subprocess.call(arglist, shell=False)
+
+
+
 
 # -- General configuration ---------------------------------------------
 

@@ -7,5 +7,6 @@ dependencies:
   - cookiecutter
   - sphinx
   - sphinx_rtd_theme
+  - matplotlib
   - sphinxcontrib-apidoc 
   - pip
