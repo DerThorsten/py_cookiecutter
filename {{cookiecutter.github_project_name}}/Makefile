@@ -68,8 +68,8 @@ coverage-no-html: ## check code coverage quickly with the default Python
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/{{ cookiecutter.python_package_name }}.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ {{ cookiecutter.python_package_name }}
+	#rm -f docs/modules.rst
+	#sphinx-apidoc -o docs/ {{ cookiecutter.python_package_name }}
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html

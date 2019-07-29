@@ -29,3 +29,20 @@ print("my variable is {}".format(myvariable))
 # This is also another code block.
 
 print('my variable plus 2 is {}'.format(myvariable + 2))
+
+
+
+
+
+#%%
+# This is another section header
+# ------------------------------
+#
+# Plots look nice in examples
+import matplotlib.pyplot as plt
+
+plt.plot([1,23,2,4])
+plt.ylabel('some numbers')
+
+plt.show()
+

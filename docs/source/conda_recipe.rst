@@ -11,7 +11,5 @@ to the conda recipe
     project
     ├── ...
     ├── recipe          
-    │   ├── bld.bat
-    │   ├── build.sh
-    │   ├── meta.tml
+    │   ├── meta.yaml
     ├── ...

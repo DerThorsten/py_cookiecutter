@@ -81,7 +81,6 @@ in the table below:
 Install Generated Project with setup.py
 ********************************************
 
-This cookiecutter is bet used in conjunction with conda:
 Assuming your created a package  named pytools the following installs the project using :code:`setup.py`
 
 .. code-block:: shell
@@ -91,14 +90,3 @@ Assuming your created a package  named pytools the following installs the projec
     
 
 
-Install dev requirements
-=========================
-
-To install all dev requirements ofn this cookiecutter just install the dependencies via the requirements yaml file
-
-.. code-block:: shell
-
-    $ conda env create -f py_cookiecutter-dev-requiremnts.yml
-
-This will create a fresh conda environments with all dependencies to use the cookiecutter and 
-to build the documentation of this project.
