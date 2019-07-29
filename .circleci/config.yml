@@ -22,7 +22,7 @@ variables:
       command: |
         conda install conda-build make
         cd ..
-        cookiecutter repo --overwrite-if-exists --no-input
+        cookiecutter py_cookiecutter --overwrite-if-exists --no-input
         cd pytools
         conda build recipe -c conda-forge
 
@@ -38,15 +38,15 @@ variables:
       name: Run test scripts
       command: |
         conda init bash
-        chmod +x tests/test_project.sh 
-        ./tests/test_project.sh repo source
+        chmod +x .ci/test_project.sh 
+        ./.ci/test_project.sh py_cookiecutter
 
 
 jobs:
   test_job:
     docker:
      - image: continuumio/miniconda3:4.5.12
-    working_directory: ~/repo
+    working_directory: ~/py_cookiecutter
     steps:
       - checkout
       - *install_build_essential
@@ -56,7 +56,7 @@ jobs:
   test_conda_build_job:
     docker:
      - image: continuumio/miniconda3:4.5.12
-    working_directory: ~/repo
+    working_directory: ~/py_cookiecutter
     steps:
       - checkout
       - *install_build_essential
@@ -66,7 +66,7 @@ jobs:
   push_to_pytools_job:
     docker:
      - image: continuumio/miniconda3:4.5.12
-    working_directory: ~/repo
+    working_directory: ~/py_cookiecutter
     steps:
       - checkout
       - add_ssh_keys:
@@ -88,7 +88,7 @@ jobs:
               git clone https://github.com/DerThorsten/pytools -b tests
             fi
             conda install --yes cookiecutter -c conda-forge 
-            cookiecutter repo --overwrite-if-exists --no-input  --config-file ~/repo/tests/cookiecutter_config.yaml
+            cookiecutter py_cookiecutter --overwrite-if-exists --no-input  --config-file ~/py_cookiecutter/.ci/cookiecutter_config.yaml
             cd pytools
 
             
