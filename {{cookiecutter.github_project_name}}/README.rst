@@ -29,9 +29,13 @@ Features
 --------
 
 Current features include: 
-  * modern C++ 14
-  * build system with modernish CMake 
+  * conda ready
+  * pytest unit test
+  * continous integration
 
+  * coverall code coverage
+  * documentation with sphinx
+  * documentation on readthedocs
 
 
 
