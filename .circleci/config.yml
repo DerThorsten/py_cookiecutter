@@ -88,7 +88,7 @@ jobs:
               git clone https://github.com/DerThorsten/pytools -b tests
             fi
             conda install --yes cookiecutter -c conda-forge 
-            cookiecutter repo --overwrite-if-exists --no-input  --config-file ~/repo/tests/cookiecutter_config.yaml
+            cookiecutter repo --overwrite-if-exists --no-input  --config-file ~/repo/.ci/cookiecutter_config.yaml
             cd pytools
 
             
