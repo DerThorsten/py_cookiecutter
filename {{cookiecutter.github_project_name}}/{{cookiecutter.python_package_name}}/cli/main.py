@@ -3,12 +3,13 @@
 """Console script for {{cookiecutter.python_package_name}}."""
 import sys
 import click
-
 from .. version import __version__
+
 
 @click.group()
 def cli():
     pass
+
 
 @cli.command(help='Show version and exit')
 def version():
