@@ -101,6 +101,7 @@ jobs:
             python ~/py_cookiecutter/.ci/insert_encrypted.py
             git config user.email "derthorsten@gmail.com"
             git config user.name "DerThorsten"
+            git rm -r *
             git add .
             git commit -am "continous integration auto updated" --allow-empty
             if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
