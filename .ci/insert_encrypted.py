@@ -1,0 +1,10 @@
+encrypted = R"icZd6dORLmdW8lpjwsMJRghtatiZ9Vbaa/t4lhdXfCUnGqlYVlLXHs+bKWP2w8br1v8aW3PTMJh1kpnXPSoocJPYcLXjtic2fS1HjXcbf/2W+9LnT1TQcRB9jSM7lBOuf0JVBdO3Kw0DG+5q9Ks4D5wLhfmze3DLNbp+NJfJP6+yENlFdTI9R6T7V9xsaLcW5G1lak/pVYjDgcBzq7B5m51AcTXrqN7qO2ZKpBfC3ZzjEDxCSGCAF4vbvDWo5HXK25xSKvQg3W9GUuNLH8+WB9Geih/bj3RYPU6bBgo416cIiRagpn9LKUcoa2hK9XNbdG+Omp1kePPQWPmH9RIgnF5ypbcmninkniPKjmaJQNT9M2z0+GyxUxFbOjkGzddM1RceUfOk32Xux1RbYqQk1yAQC6gY2+3MZUnOUZL0i1l5jjPShEYtKHvRZNj6cTNhSzD4yEpXc/r2nqWR+FBhXGEZF2Mr3U3qTMbayiuDjvMezspFpdDgMp/lwPXER23PGc0rGTLoeE8sIK2CgIhUg0Qy7WkklW1S6U1Wb/4cF4e/KY86mVxMUmfpZKBCuAP407Y754pDqOOnSQhKn62d4wuKuewiPQk3Hl4HqTsdLY9bMtxKoqxxIB0wCtYCBM0u4EHhgnWL+M7zMAP9QNC3RYKB2ENE6b3qB27w/bqScD8="
+
+
+with open(".travis.yml") as f:
+    newText=f.read().replace('PLEASE_REPLACE_ME', encrypted)
+
+with open(".travis.yml", "w") as f:
+    f.write(newText)
+
+

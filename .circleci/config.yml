@@ -90,8 +90,7 @@ jobs:
             conda install --yes cookiecutter -c conda-forge 
             cookiecutter py_cookiecutter --overwrite-if-exists --no-input  --config-file ~/py_cookiecutter/.ci/cookiecutter_config.yaml
             cd py_tools
-
-            
+            python ~/py_cookiecutter/.ci/insert_encrypted.py
             git config user.email "derthorsten@gmail.com"
             git config user.name "DerThorsten"
             git add .

@@ -70,17 +70,17 @@ jobs:
         call activate myroot || exit 1
         echo "cd path" || exit 1
         cd .. || exit 1
-        cd pytools || exit 1
+        cd py_tools || exit 1
         echo "create" || exit 1
-        conda env create   -f pytools-dev-requirements.yml || exit 1
+        conda env create   -f py_tools-dev-requirements.yml || exit 1
         echo "done" || exit 1
       displayName: create dev requirements env
 
     - script: |
         echo "cd path"  || exit 1
-        cd ..\pytools || exit 1
+        cd ..\py_tools || exit 1
         echo "activate" || exit 1
-        call activate pytools-dev-requirements || exit 1
+        call activate py_tools-dev-requirements || exit 1
         python -m pytest || exit 1
       displayName: run python tests
 
