@@ -105,15 +105,15 @@ jobs:
             git config user.email "derthorsten@gmail.com"
             git config user.name "DerThorsten"
             git add .
-            git commit -am "continous integration auto updated" --allow-empty
+            
+
             if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
-                  git push --force origin master
+                  git diff --quiet && git diff --staged --quiet ||   ( git commit -am "continous integration auto updated" && git push --force origin master)       
                   bumpversion patch
-                  git commit -am "continous integration auto updated" --allow-empty
-                  git push --force 
+                  git diff --quiet && git diff --staged --quiet || ( git commit -am "continous integration auto updated" && git push --force origin master)
                   git push origin --tags
             else
-              git push --force origin tests
+                  git diff --quiet && git diff --staged --quiet ||   ( git commit -am "continous integration auto updated" && git push --force origin tests)
             fi
             
 
