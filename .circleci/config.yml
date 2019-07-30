@@ -87,7 +87,7 @@ jobs:
               echo "NOT IN master"
               git clone https://github.com/DerThorsten/py_tools -b tests
             fi
-            OLD_VERSION=$(perl -pe '($_)=/([0-9]+([.][0-9]+)+)/' py_tools/version.py)
+            OLD_VERSION=$(perl -pe '($_)=/([0-9]+([.][0-9]+)+)/' py_tools/py_tools/version.py)
             if [ -z "$OLD_VERSION" ]
             then
                   echo "\$OLD_VERSION is empty"
