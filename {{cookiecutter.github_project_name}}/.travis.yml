@@ -47,4 +47,3 @@ deploy:
   on:
     tags: true
     repo: {{ cookiecutter.github_username }}/{{ cookiecutter.github_project_name }}
-    python: 3.6
