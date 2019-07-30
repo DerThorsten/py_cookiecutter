@@ -71,7 +71,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "33:ed:be:ac:2e:4f:2d:0c:73:5d:a6:c3:0a:e7:91:96"
+            - "28:9e:9c:ff:e4:4b:94:6d:4b:e6:1c:1d:46:e5:bc:64"
       - *prepare_conda
       - run:
           name: clone py_tools
