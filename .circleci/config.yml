@@ -90,10 +90,10 @@ jobs:
             OLD_VERSION=$(perl -pe '($_)=/([0-9]+([.][0-9]+)+)/' py_tools/version.py)
             if [ -z "$OLD_VERSION" ]
             then
-                  echo "\$var is empty"
-                  OLD_VERSION=0.1.0
+                  echo "\$OLD_VERSION is empty"
+                  OLD_VERSION=0.1.0 
             else
-                  echo "\$var is NOT empty"
+                  echo "\$OLD_VERSION is NOT empty"
             fi
             conda install --yes bumpversion cookiecutter -c conda-forge 
             cookiecutter py_cookiecutter version=$OLD_VERSION --overwrite-if-exists --no-input --config-file ~/py_cookiecutter/.ci/cookiecutter_config.yaml
