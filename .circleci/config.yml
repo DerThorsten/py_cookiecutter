@@ -87,8 +87,10 @@ jobs:
               echo "NOT IN master"
               git clone https://github.com/DerThorsten/py_tools -b tests
             fi
+            OLD_VERSION=$(perl -pe '($_)=/([0-9]+([.][0-9]+)+)/' py_tools/version.py)
             conda install --yes cookiecutter -c conda-forge 
-            cookiecutter py_cookiecutter --overwrite-if-exists --no-input  --config-file ~/py_cookiecutter/.ci/cookiecutter_config.yaml
+            cookiecutter py_cookiecutter version $OLD_VERSION --overwrite-if-exists --no-input 
+             --config-file ~/py_cookiecutter/.ci/cookiecutter_config.yaml
             cd py_tools
             python ~/py_cookiecutter/.ci/insert_encrypted.py
             git config user.email "derthorsten@gmail.com"
@@ -97,9 +99,13 @@ jobs:
             git commit -am "continous integration auto updated" --allow-empty
             if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
                   git push --force origin master
+                  bumpversion patch
+                  git push --tags
             else
               git push --force origin tests
             fi
+            
+
 
             
 

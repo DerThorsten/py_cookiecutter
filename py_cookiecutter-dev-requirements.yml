@@ -4,6 +4,7 @@ channels:
   - anaconda
   - conda-forge
 dependencies:
+  - bumpversion
   - cookiecutter
   - sphinx
   - sphinx_rtd_theme
