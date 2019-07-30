@@ -5,7 +5,7 @@ This is my example script
 This example doesn't do much, it just makes a simple plot
 """
 
-#%%
+################################################################################
 # This is a section header
 # ------------------------
 # This is the first section!
@@ -21,7 +21,7 @@ print("my variable is {}".format(myvariable))
 # This is the end of the 'code block' (if using an above IDE). All code within
 # this block can be easily executed all at once.
 
-#%%
+################################################################################
 # This is another section header
 # ------------------------------
 #
@@ -34,7 +34,7 @@ print('my variable plus 2 is {}'.format(myvariable + 2))
 
 
 
-#%%
+################################################################################
 # This is another section header
 # ------------------------------
 #
