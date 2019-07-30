@@ -1,21 +1,14 @@
 version: 2
 variables:
 
-  install_build_essential#: &install_build_essential
-    run:
-      name: Install Build essential
-      command: |
-        apt-get update
-        apt-get install -y build-essential
 
-  prepare_conda: &prepare_conda
+
+  install_conda_build_and_cookiecutter: &install_conda_build_and_cookiecutter
     run:
       name: Config and Update Conda
       command: |
-        conda config --set always_yes yes --set changeps1 no
-        conda update -q conda
         conda install cookiecutter -c conda-forge 
-
+        conda install conda-build
   run_test_conda_build: &run_test_conda_build
     run:
       name: Run tests
@@ -26,6 +19,7 @@ variables:
     run:
       name: update conda
       command: |
+        conda config --set always_yes yes --set changeps1 no
         conda update -q conda 
         conda init bash
 
@@ -44,7 +38,6 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      #- *install_build_essential
       - *update_conda
       - *run_test_script
 
@@ -54,8 +47,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      #- *install_build_essential
-      - *prepare_conda
+      - *update_conda
+      - *install_conda_build_and_cookiecutter
       - *run_test_conda_build
 
 workflows:
