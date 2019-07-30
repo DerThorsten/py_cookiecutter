@@ -95,13 +95,15 @@ jobs:
             else
                   echo "\$OLD_VERSION is NOT empty ( = $OLD_VERSION)"
             fi
+            cd py_tools
+            git rm -r *
+            cd ..
             conda install --yes bumpversion cookiecutter -c conda-forge 
             cookiecutter py_cookiecutter version=$OLD_VERSION --overwrite-if-exists --no-input --config-file ~/py_cookiecutter/.ci/cookiecutter_config.yaml
             cd py_tools
             python ~/py_cookiecutter/.ci/insert_encrypted.py
             git config user.email "derthorsten@gmail.com"
             git config user.name "DerThorsten"
-            git rm -r *
             git add .
             git commit -am "continous integration auto updated" --allow-empty
             if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
