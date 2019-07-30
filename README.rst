@@ -22,7 +22,7 @@ Python Cookiecutter
 
 Demo Project
 ------------------------
-Have a look at `github.com/DerThorsten/pytools <https://github.com/DerThorsten/pytools>`_, an
+Have a look at `github.com/DerThorsten/pytools <https://github.com/DerThorsten/py_tools>`_, an
 unmodified example project created with this py_cookiecutter.
 
 
