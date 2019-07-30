@@ -56,6 +56,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.github_project_name }}',
-    version="{{cookiecutter.version}}",
+    version='{{cookiecutter.version}}',
     zip_safe=False,
 )
