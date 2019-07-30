@@ -61,10 +61,10 @@ in the table below:
    * - python_package_name          
      - name of the python package
      - pytools
-   * - github_user_name             
+   * - github_username             
      - authors github user name
      - JohnDoe
-   * - azure_user_name              
+   * - azure_username              
      - authors user name on microsoft azure
      - JohnDoe
    * - open_source_license          

@@ -23,7 +23,7 @@ variables:
         conda install conda-build make
         cd ..
         cookiecutter py_cookiecutter --overwrite-if-exists --no-input
-        cd pytools
+        cd py_tools
         conda build recipe -c conda-forge
 
   update_conda: &update_conda
@@ -63,7 +63,7 @@ jobs:
       - *prepare_conda
       - *run_test_conda_build
   
-  push_to_pytools_job:
+  push_to_py_tools_job:
     docker:
      - image: continuumio/miniconda3:4.5.12
     working_directory: ~/py_cookiecutter
@@ -74,22 +74,22 @@ jobs:
             - "35:d1:a9:55:04:c2:0f:c9:26:5a:fb:71:85:dc:8a:c5"
       - *prepare_conda
       - run:
-          name: clone pytools
+          name: clone py_tools
           command: |
             cd ..
-            rm -rf pytools
+            rm -rf py_tools
             echo "CIRCLE_BRANCH $CIRCLE_BRANCH"
             echo "CIRCLE_USERNAME  $CIRCLE_USERNAME"
             if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
                 echo "IN master"
-                git clone https://github.com/DerThorsten/pytools
+                git clone https://github.com/DerThorsten/py_tools
             else
               echo "NOT IN master"
-              git clone https://github.com/DerThorsten/pytools -b tests
+              git clone https://github.com/DerThorsten/py_tools -b tests
             fi
             conda install --yes cookiecutter -c conda-forge 
             cookiecutter py_cookiecutter --overwrite-if-exists --no-input  --config-file ~/py_cookiecutter/.ci/cookiecutter_config.yaml
-            cd pytools
+            cd py_tools
 
             
             git config user.email "derthorsten@gmail.com"
@@ -112,7 +112,7 @@ workflows:
     jobs:
       - test_job
       - test_conda_build_job
-      - push_to_pytools_job
+      - push_to_py_tools_job
 
   nightly-test:
     triggers:
@@ -125,5 +125,5 @@ workflows:
     jobs:
        - test_job
        - test_conda_build_job
-       - push_to_pytools_job
+       - push_to_py_tools_job
 

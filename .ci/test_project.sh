@@ -27,7 +27,7 @@ cookiecutter $TEMPLATE_FOLDER --overwrite-if-exists --no-input || exit 1
 echo "------------------------------------------------------------"
 echo "go into pytools"
 echo "------------------------------------------------------------"
-cd pytools || exit 1
+cd py_tools || exit 1
 
 
 echo "------------------------------------------------------------"
