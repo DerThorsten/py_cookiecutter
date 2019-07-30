@@ -107,6 +107,7 @@ jobs:
                   git push --force origin master
                   bumpversion patch
                   git commit -am "continous integration auto updated" --allow-empty
+                  git push --force origin tests
                   git push origin --tags
             else
               git push --force origin tests
