@@ -87,7 +87,26 @@ The next change to your repository should trigger builds on the CI servers.
 
 Enable Continuous PyPi Deployment with Travis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To make the package available on PyPI, the .travis.yml
+file needs to be modified.
+On the following block at the end of the file, :code:`PLEASE_REPLACE_ME`
+needs to be replaced with your encrypted PyPI password.
+To properly encrypt your password use the Travis-cmd-tools_.
+After that, each new git-tag_ will trigger the deployment of a new version on PyPI.
 
+
+.. code-block:: yaml
+    
+    deploy:
+      provider: pypi
+      distributions: sdist bdist_wheel
+      user: {{ cookiecutter.pypi_username }}
+      password:
+        secure: PLEASE_REPLACE_ME
+      on:
+        tags: true
+        repo: {{ cookiecutter.github_username }}/{{ cookiecutter.github_project_name }}
+        python: 3.6
 
 
 
@@ -106,3 +125,5 @@ Enable Continuous Documentation on Readthedocs.org
 .. _Bumpversion: https://github.com/peritus/bumpversion
 .. _Punch: https://github.com/lgiordani/punch
 .. _PyPi: https://pypi.python.org/pypi
+.. _Travis-cmd-tools: https://docs.travis-ci.com/user/encryption-keys/
+.. _git-tag: https://git-scm.com/book/en/v2/Git-Basics-Tagging
