@@ -106,7 +106,8 @@ jobs:
             if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
                   git push --force origin master
                   bumpversion patch
-                  git push --tags
+                  git commit -am "continous integration auto updated" --allow-empty
+                  git push origin --tags
             else
               git push --force origin tests
             fi
