@@ -52,15 +52,13 @@ variables:
     run:
       name: create package
       command: |
-        echo -e "[pypi]" >> ~/.pypirc
-        echo -e "username = {{cookiecutter.pypi_username}}" >> ~/.pypirc
-        echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc 
+        make release
 
   upload_package: &upload_package
     run:
       name: upload package
       command: |
-        twine upload dist
+        make upload
 
 
 jobs:
@@ -105,7 +103,7 @@ workflows:
     jobs:
       - test_job
       - test_conda_build_job
-      - deploy_pypi_job:
+      - deploy_pypi_job-:
           requires:
             - test_job
           filters:
