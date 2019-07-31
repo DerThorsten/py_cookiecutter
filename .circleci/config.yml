@@ -109,11 +109,8 @@ jobs:
 
 
             if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
-
-                  sed -i 's/commit = True/commit = False/g' .bumpversion.cfg
                   sed -i 's/tag = True/tag = False/g' .bumpversion.cfg
                   bumpversion patch --allow-dirty
-                  sed -i 's/commit = False/commit = True/g' .bumpversion.cfg
                   sed -i 's/tag = False/tag = True/g' .bumpversion.cfg
                   git commit -am "continous integration auto updated" 
                   git tag v$(date "+%Y.%M.%d.%H.%S")
