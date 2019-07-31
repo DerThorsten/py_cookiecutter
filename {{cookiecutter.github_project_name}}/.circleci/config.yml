@@ -30,14 +30,12 @@ variables:
         conda init bash
         chmod +x .ci/test_project.sh 
         ./.ci/test_project.sh 
-
-
-
-  install_twine: &install_twine
+        
+  install_upload_deps: &install_upload_deps
     run:
       name: setup pypirc
       command: |
-        pip install twine
+        conda install twine make -c conda-forge
 
   setup_pypi_rc: &setup_pypi_rc
     run:
@@ -89,7 +87,7 @@ jobs:
     steps:
       - checkout
       - *update_conda
-      - *install_twine
+      - *install_upload_deps
       - *setup_pypi_rc
       - *create_package
       - *upload_package
