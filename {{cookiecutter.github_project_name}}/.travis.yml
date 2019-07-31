@@ -39,13 +39,13 @@ script:
 # to install the travis cmd tool try
 # $ gem install travis
 # (https://docs.travis-ci.com/user/encryption-keys/)
-deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: {{ cookiecutter.pypi_username }}
-  password:
-    secure: PLEASE_REPLACE_ME
-  on:
-    tags: true
-    repo: {{ cookiecutter.github_username }}/{{ cookiecutter.github_project_name }}
-    python: 3.7
+# deploy:
+#   provider: pypi
+#   distributions: sdist bdist_wheel
+#   user: {{ cookiecutter.pypi_username }}
+#   password:
+#     secure: PLEASE_REPLACE_ME
+#   on:
+#     tags: true
+#     repo: {{ cookiecutter.github_username }}/{{ cookiecutter.github_project_name }}
+#     python: 3.7
