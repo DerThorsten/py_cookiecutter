@@ -106,11 +106,11 @@ workflows:
       - test_job
       - test_conda_build_job
       - deploy_pypi:
-        requires:
-          - test_job
-        filters:
-          tags:
-             only: /^v[0-9]+(\.[0-9]+)*$/
+          requires:
+            - test_job
+          filters:
+            tags:
+               only: /^v[0-9]+(\.[0-9]+)*$/
 
   nightly-test:
     triggers:
