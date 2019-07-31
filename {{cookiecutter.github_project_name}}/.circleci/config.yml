@@ -52,7 +52,7 @@ variables:
     run:
       name: create package
       command: |
-        make release
+        make dist
 
   upload_package: &upload_package
     run:
