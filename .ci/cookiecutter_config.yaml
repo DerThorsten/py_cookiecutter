@@ -3,3 +3,4 @@ default_context:
     email: "derthorstenbeier@gmail.com"
     github_username: "DerThorsten"
     azure_username: "derthorstenbeier"
+    python_package_name: "my-py-tools"
