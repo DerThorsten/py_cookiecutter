@@ -86,7 +86,7 @@ jobs:
             else
               echo "NOT IN master"
               git clone https://github.com/DerThorsten/py_tools -b tests
-            fi
+            fitravis encrypt --add deploy.password
             OLD_VERSION=$(perl -pe '($_)=/([0-9]+([.][0-9]+)+)/' py_tools/py_tools/version.py)
             if [ -z "$OLD_VERSION" ]
             then
@@ -107,11 +107,17 @@ jobs:
             git add .
             
 
+
             if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
-                  git diff --quiet && git diff --staged --quiet ||   ( git commit -am "continous integration auto updated" && git push --force origin master)       
-                  bumpversion patch
-                  git diff --quiet && git diff --staged --quiet || ( git commit -am "continous integration auto updated" && git push --force origin master)
-                  git push origin --tags
+
+                  sed -i 's/commit = True/commit = False/g' .bumpversion.cfg
+                  sed -i 's/tag = True/tag = False/g' .bumpversion.cfg
+                  bumpversion patch --allow-dirty
+                  sed -i 's/commit = False/commit = True/g' .bumpversion.cfg
+                  sed -i 's/tag = False/tag = True/g' .bumpversion.cfg
+                  git commit -am "continous integration auto updated" 
+                  git tag v$(date "+%Y.%M.%d.%H.%S")
+                  git push origin v$(date "+%Y.%M.%d.%H.%S")
             else
                   git diff --quiet && git diff --staged --quiet ||   ( git commit -am "continous integration auto updated" && git push --force origin tests)
             fi
