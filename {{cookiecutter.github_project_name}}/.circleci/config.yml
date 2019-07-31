@@ -37,7 +37,7 @@ variables:
     run:
       name: setup pypirc
       command: |
-        conda install twine make -c conda-forge
+        conda install twine make -c conda
 
   setup_pypi_rc: &setup_pypi_rc
     run:
@@ -58,7 +58,7 @@ variables:
     run:
       name: upload package
       command: |
-        make upload
+        make release
 
 
 jobs:
