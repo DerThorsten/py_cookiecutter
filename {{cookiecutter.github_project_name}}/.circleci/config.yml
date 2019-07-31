@@ -30,7 +30,9 @@ variables:
         conda init bash
         chmod +x .ci/test_project.sh 
         ./.ci/test_project.sh 
-        
+
+
+
   install_upload_deps: &install_upload_deps
     run:
       name: setup pypirc
