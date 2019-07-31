@@ -109,7 +109,7 @@ jobs:
 
 
             if [[ "$CIRCLE_BRANCH $CIRCLE_USERNAME" == "master DerThorsten" ]]; then
-                  git diff --quiet && git diff --staged --quiet ||   ( git commit -am "continous integration auto updated" && git push --force origin tests)
+                  git diff --quiet && git diff --staged --quiet ||   ( git commit -am "continous integration auto updated" && git push --force origin master)
                   sed -i 's/tag = True/tag = False/g' .bumpversion.cfg
                   bumpversion patch --allow-dirty
                   sed -i 's/tag = False/tag = True/g' .bumpversion.cfg
