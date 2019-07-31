@@ -86,7 +86,7 @@ jobs:
             else
               echo "NOT IN master"
               git clone https://github.com/DerThorsten/py_tools -b tests
-            fitravis encrypt --add deploy.password
+            fi
             OLD_VERSION=$(perl -pe '($_)=/([0-9]+([.][0-9]+)+)/' py_tools/py_tools/version.py)
             if [ -z "$OLD_VERSION" ]
             then
