@@ -9,9 +9,6 @@
 .. image:: https://img.shields.io/travis/{{cookiecutter.github_username}}/{{cookiecutter.github_project_name}}.svg
         :target: https://travis-ci.org/{{cookiecutter.github_username}}/{{cookiecutter.github_project_name}}
 
-.. image:: https://travis-ci.org/{{cookiecutter.github_username}}/{{cookiecutter.github_project_name}}.svg?branch=master
-    :target: https://travis-ci.org/{{cookiecutter.github_username}}/{{cookiecutter.github_project_name}}
-
 .. image:: https://circleci.com/gh/{{cookiecutter.github_username}}/{{cookiecutter.github_project_name}}/tree/master.svg?style=svg
     :target: https://circleci.com/gh/{{cookiecutter.github_username}}/{{cookiecutter.github_project_name}}/tree/master
 
